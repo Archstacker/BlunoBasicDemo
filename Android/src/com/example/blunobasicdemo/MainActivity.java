@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class MainActivity  extends BlunoLibrary {
 	private Button buttonScan;
 	private Button buttonSerialSend;
+	private Button buttonDraw;
 	private EditText serialSendText;
 	private TextView serialReceivedText;
 	
@@ -44,6 +45,19 @@ public class MainActivity  extends BlunoLibrary {
 				// TODO Auto-generated method stub
 
 				buttonScanOnClickProcess();										//Alert Dialog for selecting the BLE device
+			}
+		});
+
+        buttonDraw = (Button) findViewById(R.id.buttonDraw);					//initial the button for scanning the BLE device
+        buttonDraw.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MainActivity.this
+						, DrawActivity.class);
+				startActivity(intent);
+				
 			}
 		});
 	}
