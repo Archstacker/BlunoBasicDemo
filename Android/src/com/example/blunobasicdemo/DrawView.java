@@ -3,29 +3,19 @@ package com.example.blunobasicdemo;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff.Mode;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-/**
- * This is demo code to accompany the Mobiletuts+ tutorial series:
- * - Android SDK: Create a Drawing App
- * 
- * Sue Smith
- * August 2013
- *
- */
 public class DrawView extends View {
 	
 	//drawing path
 	private Path drawPath;
 	//drawing and canvas paint
 	private Paint drawPaint, canvasPaint;
-	//initial color
-	private int paintColor = 0xFF660000;
 	//canvas
 	private Canvas drawCanvas;
 	//canvas bitmap
@@ -42,12 +32,9 @@ public class DrawView extends View {
 		//prepare for drawing and setup paint stroke properties
 		drawPath = new Path();
 		drawPaint = new Paint();
-		drawPaint.setColor(paintColor);
 		drawPaint.setAntiAlias(true);
-		drawPaint.setStrokeWidth(20);
+		drawPaint.setStrokeWidth(6);
 		drawPaint.setStyle(Paint.Style.STROKE);
-		drawPaint.setStrokeJoin(Paint.Join.ROUND);
-		drawPaint.setStrokeCap(Paint.Cap.ROUND);
 		canvasPaint = new Paint(Paint.DITHER_FLAG);
 	}
 	
@@ -74,6 +61,7 @@ public class DrawView extends View {
 		//respond to down, move and up events
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
+		    drawCanvas.drawColor(0, Mode.CLEAR);
 			drawPath.moveTo(touchX, touchY);
 			break;
 		case MotionEvent.ACTION_MOVE:
@@ -93,10 +81,4 @@ public class DrawView extends View {
 		
 	}
 	
-	//update color
-	public void setColor(String newColor){
-		invalidate();
-		paintColor = Color.parseColor(newColor);
-		drawPaint.setColor(paintColor);
-	}
 }
