@@ -9,11 +9,6 @@
     tools:context=".MainActivity" >
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
         android:id="@+id/serialReveicedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,12 +61,20 @@
         android:text="Scan" />
 
     <Button
-        android:id="@+id/buttonDraw"
+        android:id="@+id/buttonClear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/serialSendText"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@+id/buttonScan"
-        android:text="Draw" />
+        android:text="Clear" />
+
+    <view
+        android:id="@+id/drawView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/serialReveicedText"
+        android:layout_below="@+id/serialSendText"
+        class="com.example.blunobasicdemo.DrawView" />
 
 </RelativeLayout>
