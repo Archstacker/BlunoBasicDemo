@@ -13,6 +13,10 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+interface Handle {
+    public void send(String string);
+}
+
 public class DrawView extends View {
     
     //drawing path
@@ -27,7 +31,15 @@ public class DrawView extends View {
     private float prevX,prevY;
     private ArrayList<Double> saveData;
 
-    public DrawView(Context context, AttributeSet attrs){
+    Handle handle;
+    public void doSend(String string) {
+        handle.send(string);
+    }
+    public void setSend(Handle handle) {
+        this.handle = handle;
+    }
+    
+    public DrawView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setupDrawing();
     }
@@ -95,6 +107,7 @@ public class DrawView extends View {
         }
         //redraw
         invalidate();
+        doSend("touched");
         return true;
         
     }

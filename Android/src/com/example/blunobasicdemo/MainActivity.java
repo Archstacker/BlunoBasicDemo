@@ -56,6 +56,13 @@ public class MainActivity  extends BlunoLibrary {
 				serialReceivedText.setText(null);
 			}
 		});
+        
+        DrawView drawView = (DrawView) findViewById(R.id.drawView);
+        drawView.setSend(new Handle() {
+            public void send(String string) {
+                serialSend(string);
+            }
+        });
 	}
 
 	protected void onResume(){
